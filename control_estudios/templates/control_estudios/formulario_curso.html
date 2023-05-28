@@ -1,0 +1,106 @@
+{% extends "control_estudios/base.html" %}
+
+{% block contenido %}
+<style>
+  .formulario-curso {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    color: #333;
+      margin: 50px auto;
+      width: 400px;
+      padding: 40px;
+      background-color: #f7f7f7;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      animation: squeezeIn 0.8s ease;
+  }
+  
+  .formulario-curso h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .campo-formulario {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  input[type="text"],
+  input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .error {
+    color: red;
+    font-size: 12px;
+  }
+  
+  .boton-enviar {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .boton-enviar:hover {
+    background-color: #008bff;;
+
+  
+  }
+
+  @keyframes squeezeIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+</style>
+<div class="formulario-curso">
+  <h2>Curso</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="campo-formulario">
+      <label for="{{ formulario.nombre.id_for_label }}">Nombre</label>
+      {{ formulario.nombre }}
+      <span class="error">{{ formulario.nombre.errors }}</span>
+    </div>
+    <div class="campo-formulario">
+      <label for="{{ formulario.comision.id_for_label }}">Comisión</label>
+      {{ formulario.comision }}
+      <span class="error">{{ formulario.comision.errors }}</span>
+    </div>
+    <div class="campo-formulario">
+      <label for="{{ formulario.descripcion.id_for_label }}">Descripción</label>
+      {{ formulario.descripcion }}
+      <span class="error">{{ formulario.descripcion.errors }}</span>
+    </div>
+    <div class="campo-formulario">
+      <label for="{{ formulario.duracion.id_for_label }}">Duración</label>
+      {{ formulario.duracion }}
+      <span class="error">{{ formulario.duracion.errors }}</span>
+    </div>
+    <input type="submit" value="Guardar" class="boton-enviar" />
+  </form>
+  <br>
+<a href="{% url 'lista_cursos' %}">Volver a lista</a>
+</div>
+{% endblock contenido %}

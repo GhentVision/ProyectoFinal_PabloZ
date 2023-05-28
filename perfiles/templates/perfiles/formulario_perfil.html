@@ -1,0 +1,86 @@
+{% extends "control_estudios/base.html" %}
+
+{% block contenido %}
+<style>
+  .registration-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    animation: juicy 1s;
+  }
+
+  @keyframes juicy {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .registration-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  .registration-form input[type="text"],
+  .registration-form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .registration-form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .registration-form input[type="submit"]:hover {
+    background-color: #0069d9;
+  }
+
+  .registration-form .error-message {
+    color: red;
+    margin-top: 5px;
+  }
+</style>
+
+<div class="registration-form">
+  <h2 class="text-center">Editar datos</h2>
+  <p>Tu nickname es: <b>{{ object.username }}</b></p>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <label for="{{ form.first_name.id_for_label }}">Nombre:</label>
+    {{ form.first_name }}
+    {% if form.first_name.errors %}
+    <p class="error-message">{{ form.first_name.errors }}</p>
+    {% endif %}
+    <label for="{{ form.last_name.id_for_label }}">Apellido:</label>
+    {{ form.last_name }}
+    {% if form.last_name.errors %}
+    <p class="error-message">{{ form.last_name.errors }}</p>
+    {% endif %}
+    <label for="{{ form.email.id_for_label }}">Correo electrónico:</label>
+    {{ form.email }}
+    {% if form.email.errors %}
+    <p class="error-message">{{ form.email.errors }}</p>
+    {% endif %}
+    <input type="submit" value="Guardar cambios" />
+  </form>
+</div>
+{% endblock contenido %}
+

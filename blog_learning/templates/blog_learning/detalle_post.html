@@ -1,0 +1,87 @@
+{% extends "control_estudios/base.html" %}
+
+{% block contenido %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<style>
+.blog-post {
+    margin-bottom: 50px;
+}
+
+.blog-post .post-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.blog-post .post-meta {
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+.blog-post .post-content {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.blog-post .post-actions {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.blog-post .post-actions .btn {
+    margin-right: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.blog-post .post-actions .btn:hover {
+    background-color: #0069d9;
+}
+
+.back-link {
+    font-size: 14px;
+    color: #007bff;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+</style>
+
+<div class="container animate__animated animate__fadeIn">
+    <div class="blog-post">
+        <h1 class="post-title">{{ post.titulo }}</h1>
+        <p class="post-meta">Publicado el {{ post.fecha_publicacion|date:"d/m/Y" }} por {{ post.creador.username }}</p>
+        <div class="post-content">
+            <p>{{ post.contenido }}</p>
+        </div>
+        <div class="post-actions">
+            {% if user == post.creador %}
+                <a href="{% url 'editar_post' post_id=post.id %}" class="btn">
+                    <i class="bi bi-pencil-fill"></i> Editar
+                </a>
+                <a href="{% url 'eliminar_post' post_id=post.id %}" class="btn" onclick="return confirm('¿Estás seguro/a de que deseas eliminar este post?')">
+                    <i class="bi bi-trash-fill"></i> Eliminar
+                </a>
+            {% endif %}
+        </div>
+        <a href="{% url 'lista_posts' %}" class="back-link btn btn-outline-primary btn-sm">
+            <i class="bi bi-arrow-left"></i> Volver a la lista de posts
+        </a>
+</div>
+{% endblock contenido %}

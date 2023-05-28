@@ -1,0 +1,98 @@
+{% extends "control_estudios/base.html" %}
+
+{% block contenido %}
+<style>
+    .form-container {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      color: #555;
+      margin: 50px auto;
+      width: 400px;
+      padding: 40px;
+      background-color: #f7f7f7;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      animation: squeezeIn 0.8s ease;
+    }
+  
+    @keyframes squeezeIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  
+    .form-container h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+  
+    .form-container label {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+  
+    .form-container input[type="text"],
+    .form-container input[type="password"],
+    .form-container select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+    }
+  
+    .form-container input[type="submit"] {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+  
+    .form-container input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  
+    .form-container .error-message {
+      color: #ff0000;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+<div class="form-container">
+  <h2>Editar Post</h2>
+  <form method="POST" action="{% url 'editar_post' post.id %}">
+    {% csrf_token %}
+    {% for field in form %}
+    <div class="form-group">
+      <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+      {{ field }}
+      {% if field.errors %}
+      <p class="error-message">{{ field.errors }}</p>
+      {% endif %}
+    </div>
+    {% endfor %}
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+  </form>
+  <br>
+  <a href="{% url 'lista_posts' %}">Volver a lista</a>
+</div>
+{% endblock contenido %}
+

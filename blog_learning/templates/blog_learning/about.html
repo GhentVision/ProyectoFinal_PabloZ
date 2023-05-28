@@ -1,0 +1,72 @@
+{% extends "control_estudios/base.html" %}
+
+{% load static %}
+
+{% block contenido %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<style>
+    .about-section {
+        margin-top: 40px;
+        text-align: center;
+    }
+
+    .about-section::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .about-section img {
+        display: inline-block;
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 50%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+    .about-section h1 {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .about-section p {
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        text-align: justify;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        display: inline-block;
+    }
+
+    .btn-primary:hover {
+        background-color: #0069d9;
+        border-color: #0062cc;
+    }
+</style>
+
+<div class="container about-section animate__animated animate__fadeIn">
+    <div class="row">
+        <div class="col-lg-4">
+            <img src="{% static 'retrato.png' %}" alt="Mi retrato">
+        </div>
+        <div class="col-lg-8">
+            <h1>Acerca de mí</h1>
+            <p>Hola a todos! Mi nombre es Pablo Zambrano Pedraza, tengo 19 años y soy de Venezuela. Como parte de mi proyecto final para el curso Coderhouse, estoy emocionado de presentar Bytebrains. Aunque aún estoy en las primeras etapas de mi camino en la programación, me apasiona aprender y compartir conocimientos con otros.</p>
+            <p>La idea de Bytebrains surgió durante la ultima preentrega del curso. Durante esa etapa, tuve la oportunidad de desarrollar la base de una plataforma educativa, lo que despertó mi interés en desarrollar mas la idea de una plataforma educativa, hasta llegar a este resultado, Bytebrains.</p>
+            <p>Bytebrains se enfoca en ofrecer cursos de programación para personas de todos los niveles. Nuestros cursos están diseñados para brindar una experiencia de aprendizaje completa y accesible. A través de contenido práctico y claro. Además, la plataforma Learning promueve la interacción y el intercambio de información útil entre los miembros de la comunidad.</p>
+        </div>
+    </div>
+</div>
+{% endblock contenido %}
