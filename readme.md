@@ -52,9 +52,9 @@ Accede a la siguiente url:
 ```
 127.0.0.1:8000/admin
 ```
-Para ingresar desde el usuario admin introduce los siguientes datos:
-username:admin
-contraseña:admin
+## Para ingresar desde el usuario admin introduce los siguientes datos:
++ username:admin
++ contraseña:admin
 
 ## Video Demostración
 
