@@ -63,7 +63,7 @@
         .learning-link {
             transition: transform 0.2s;
         }
-    
+
         .learning-link:hover {
             transform: scale(1.1);
         }
@@ -71,7 +71,7 @@
         .about-link {
             position: relative;
         }
-        
+
         .about-link::after {
             content: "Acerca de";
             position: absolute;
@@ -91,11 +91,12 @@
             color: #333;
             white-space: nowrap;
         }
-        
+
         .about-link:hover::after {
             opacity: 1;
             visibility: visible;
         }
+        
     </style>
 </head>
 
@@ -108,11 +109,12 @@
             <a class="navbar-brand learning-link" href="{%url 'lista_posts'%}">
                 <i class="bi bi-layers"></i>
                 Learning
+            </a>
             <div class="dropdown" id="plataformaDropdown">
                 <a class="navbar-brand dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     <i class="bi bi-grid-3x3-gap-fill"></i>
-                    Explorar 
+                    Explorar
                 </a>
                 <ul class="dropdown-menu fade-in" aria-labelledby="plataformaDropdown">
                     <li><a class="dropdown-item" href="{% url 'lista_estudiantes' %}">Estudiantes</a></li>
@@ -121,23 +123,32 @@
                 </ul>
             </div>
             <div class="dropdown" onmouseenter="showDropdown()" onmouseleave="hideDropdown()">
-                <a class="navbar-brand dropdown-toggle" href="#" role="button" id="usuarioDropdown"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-person-fill"></i>
+                <a class="navbar-brand dropdown-toggle" href="#" role="button" id="usuarioDropdown" data-bs-toggle="dropdown"
+                    aria-expanded="false">
                     {% if user.is_authenticated %}
+                        {% if user.avatar %}
+                            {% if user.avatar.imagen %}
+                            <img src="{{ user.avatar.imagen.url }}" style="width: 35px; height: 35px; border-radius: 50%; margin-right: 5px;">
+                            {% else %}
+                                <i class="bi bi-person-fill"></i>
+                            {% endif %}
+                        {% else %}
+                            <i class="bi bi-person-fill"></i>
+                        {% endif %}
                         {{ user.username }}
                     {% else %}
-                        Gestionar usuario
+                    <i class="bi bi-person-fill"></i> Gestionar usuario
                     {% endif %}
                 </a>
                 <ul class="dropdown-menu fade-in" id="usuarioSubmenu" aria-labelledby="usuarioDropdown">
                     {% if user.is_authenticated %}
-                    <li><a class="dropdown-item" href="{%url 'editar_perfil'%}">Editar datos</a></li>
-                    <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a></li>
+                        <li><a class="dropdown-item" href="{% url 'editar_perfil'%}">Editar datos</a></li>
+                        <li><a class="dropdown-item" href="{% url 'avatar' %}">Agregar y editar avatar</a></li>
+                        <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a></li>
                     {% else %}
-                    <li><a class="dropdown-item" href="{% url 'login' %}">Iniciar sesión</a></li>
+                        <li><a class="dropdown-item" href="{% url 'login' %}">Iniciar sesión</a></li>
                     {% endif %}
-               </ul>
+                </ul>
             </div>
             <a class="navbar-brand about-link" href="{% url 'about' %}">
                 <i class="bi bi-info-circle-fill"></i>
@@ -161,43 +172,40 @@
                     <p class="text-muted small mb-4 mb-lg-0">&copy; Plataforma educativa Bytebrains. Página creada por:
                         Pablo Zambrano.</p>
                 </div>
-                </ul>
+            </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{% static 'preentrega_pabloz/js/scripts.js' %}"></script>
     <script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="{% static 'preentrega_pabloz/js/scripts.js' %}"></script>
-        <script>
-            const dropdownToggle = document.querySelector('.dropdown-toggle');
-            const dropdownMenu = document.querySelector('.dropdown-menu');
-    
-            let isHovering = false;
-    
-            dropdownToggle.addEventListener('mouseenter', function () {
-                isHovering = true;
-                dropdownMenu.classList.add('show');
-            });
-    
-            dropdownToggle.addEventListener('mouseleave', function () {
-                isHovering = false;
-                setTimeout(function () {
-                    if (!isHovering) {
-                        dropdownMenu.classList.remove('show');
-                    }
-                }, 200);
-            });
-    
-            dropdownMenu.addEventListener('mouseenter', function () {
-                isHovering = true;
-            });
-    
-            dropdownMenu.addEventListener('mouseleave', function () {
-                isHovering = false;
-                dropdownMenu.classList.remove('show');
-            });
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        let isHovering = false;
+
+        dropdownToggle.addEventListener('mouseenter', function () {
+            isHovering = true;
+            dropdownMenu.classList.add('show');
+        });
+
+        dropdownToggle.addEventListener('mouseleave', function () {
+            isHovering = false;
+            setTimeout(function () {
+                if (!isHovering) {
+                    dropdownMenu.classList.remove('show');
+                }
+            }, 200);
+        });
+
+        dropdownMenu.addEventListener('mouseenter', function () {
+            isHovering = true;
+        });
+
+        dropdownMenu.addEventListener('mouseleave', function () {
+            isHovering = false;
+            dropdownMenu.classList.remove('show');
+        });
 
         function showDropdown() {
             document.getElementById("usuarioSubmenu").classList.add("show");
@@ -210,4 +218,3 @@
 </body>
 
 </html>
-

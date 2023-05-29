@@ -7,11 +7,12 @@
 Plataforma de cursos Online orientada a programacion.
 
 Los usuarios pueden realizar las siguientes accciones:
-- Visitar la plataforma Learning en la cual pueden ver y publicar articulos, tambien tendra acceso a listas de profesores, cursos y profesores."
-- Editar el perfil de Usuario
-- Cerrar Sesión
+- Visitar la plataforma Learning en la cual pueden ver y publicar articulos, tambien tendra acceso a listas de profesores, cursos y estudiantes."
 - Ver la pagina about o acerca de.
-- Login en caso de haber cerrado sesión
+- Login
+- Editar el perfil de Usuario
+- Subir y cambiar avatar
+- Cerrar Sesión
 
 Nota: La opción de editar y eliminar solo esta disponible en el caso de que seas el creador de dicho articulo / item.
 
@@ -47,14 +48,14 @@ python manage.py runserver
 127.0.0.1:8000/
 ```
 
-## Instrucciones para entrar al panel aministrativo de Django
+## Instrucciones para entrar al panel administrativo de Django
 Accede a la siguiente url:
 ```
 127.0.0.1:8000/admin
 ```
-Para ingresar desde el usuario admin introduce los siguientes datos:
-username:admin
-contraseña:admin
+## Para ingresar desde el usuario admin introduce los siguientes datos:
++ username: admin
++ contraseña: admin
 
 ## Video Demostración
 
