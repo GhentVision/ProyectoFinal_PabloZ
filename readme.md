@@ -28,6 +28,7 @@ Nota: La opción de editar y eliminar solo esta disponible en el caso de que sea
 - Django 4.2.1
 - sqlparse==0.4.4
 - Pillow 9.5.0
+
 ## Instrucciones 
 + Abre la carpeta contenedora del proyecto (preferiblemente desde VS Code)
 + Crea y activa el ambiente virtual (si cuentas con los requerimientos necesarios en tu ordenador puedes ejecutar el servidor sin falta de crear ambiente virtual)
@@ -47,11 +48,18 @@ python manage.py runserver
 127.0.0.1:8000/
 ```
 
+## Intrucciones para ejecutar el test unitario.
++ Para ejecutar el test escribe el siguiente comando:
+```
+python manage.py test
+```
+
 ## Instrucciones para entrar al panel administrativo de Django
 Accede a la siguiente url:
 ```
 127.0.0.1:8000/admin
 ```
+
 ## Para ingresar desde el usuario admin introduce los siguientes datos:
 + username: admin
 + contraseña: admin
