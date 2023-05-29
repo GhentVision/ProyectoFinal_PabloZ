@@ -18,7 +18,7 @@ def lista_posts(request):
 
 
 def filtrar_por_fecha(request):
-    orden = request.GET.get('orden', 'reciente')  # Default to 'reciente' if no orden parameter is provided
+    orden = request.GET.get('orden', 'reciente')
 
     if orden == 'reciente':
         posts = Post.objects.order_by('-fecha_publicacion')
