@@ -47,14 +47,14 @@ python manage.py runserver
 127.0.0.1:8000/
 ```
 
-## Instrucciones para entrar al panel aministrativo de Django
+## Instrucciones para entrar al panel administrativo de Django
 Accede a la siguiente url:
 ```
 127.0.0.1:8000/admin
 ```
 ## Para ingresar desde el usuario admin introduce los siguientes datos:
-+ username:admin
-+ contraseña:admin
++ username: admin
++ contraseña: admin
 
 ## Video Demostración
 
