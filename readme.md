@@ -7,7 +7,7 @@
 Plataforma de cursos Online orientada a programacion.
 
 Los usuarios pueden realizar las siguientes accciones:
-- Visitar la plataforma Learning en la cual pueden ver y publicar articulos, tambien tendra acceso a listas de profesores, cursos y estudiantes."
+- Visitar la plataforma Learning en la cual pueden ver y publicar articulos, tambien tendra acceso a listas de profesores, cursos y estudiantes.
 - Ver la pagina about o acerca de.
 - Login
 - Editar el perfil de Usuario
@@ -23,12 +23,11 @@ Nota: La opción de editar y eliminar solo esta disponible en el caso de que sea
 - CSS 
 - Javascript
 - Bootstrap
-- Pillow 9.5.0
 ##### Back-End
 - Python
 - Django 4.2.1
 - sqlparse==0.4.4
-
+- Pillow 9.5.0
 ## Instrucciones 
 + Abre la carpeta contenedora del proyecto (preferiblemente desde VS Code)
 + Crea y activa el ambiente virtual (si cuentas con los requerimientos necesarios en tu ordenador puedes ejecutar el servidor sin falta de crear ambiente virtual)
